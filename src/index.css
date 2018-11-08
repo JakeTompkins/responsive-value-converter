@@ -1,14 +1,74 @@
-body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+input {
+    text-align: center;
+    margin-top: 0;
+
+    font-size: 1vw;
+
+    border-radius: 1vw;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+h1 {
+    font-size: 3vw;
+}
+
+h2 {
+    font-size: 1.5vw
+}
+
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-top: 1vh;
+    padding-bottom:1vh;
+
+    width: 15vw;
+}
+
+.title {
+    padding:0px;
+
+    position: absolute;
+    left: 0px;
+    top: -3.5vh;
+
+    font-size: 1vw;
+
+
+}
+
+.tag {
+    margin: 0;
+}
+
+#body-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #7FB7BE;
+
+    height: 100vh;
+    width: 100vw;
+}
+
+#inputs-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#screen-dimensions-wrapper, #components-dimensions-wrapper, #responsive-values-wrapper {
+    display: flex;
+    justify-content: space-around;
+
+    border: 1px dotted black;
+    border-radius: 1vw;
+
+    margin-bottom: 5vh;
+
+    position: relative;
 }
