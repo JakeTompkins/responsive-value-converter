@@ -128,7 +128,7 @@ class App extends React.Component
 
             componentHeight: 150,
             componentWidth: 300,
-            fontSize: 12,
+            fontSize: 48,
 
             componentVH: null,
             componentVW: null,
