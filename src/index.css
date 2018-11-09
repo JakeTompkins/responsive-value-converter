@@ -69,7 +69,7 @@ h2 {
     top: 0px;
 
     width: 100vw;
-    height: 8vh;
+    height: 14vh;
 
     display: flex;
     justify-content: center;
@@ -77,6 +77,10 @@ h2 {
     border-radius: 1vw;
 
     background-color: rgb(245,245,245);
+}
+
+#page-title {
+    font-size: 3.00rem;
 }
 
 #display-box {
