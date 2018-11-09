@@ -88,9 +88,9 @@ function InputsBox(props)
                 <Input 
                 tagValue="Font Size"
                 type="text"
-                inputValue={props.fontVW + "Rem"}
+                inputValue={props.fontREM + "Rem"}
                 handleChangeDimension={props.handleChangeDimension}
-                dimensionChanged="fontVW"
+                dimensionChanged="fontREM"
                 disabled={true} />
             </div>
         </div>
@@ -106,6 +106,15 @@ function TitleBar(props)
     )
 }
 
+function DisplayBox(props)
+{
+    return(
+        <div id="display-box">
+            <p id="example-text" style={{fontSize: props.size + "rem"}}>{props.text}</p>
+        </div>
+    )
+}
+
 class App extends React.Component
 {
     constructor(props)
@@ -114,15 +123,21 @@ class App extends React.Component
 
 
         this.state = {
-            screenHeight: 667,
-            screenWidth: 375,
+            screenHeight: window.innerHeight,
+            screenWidth: window.innerWidth,
 
             componentHeight: 150,
             componentWidth: 300,
             fontSize: 12,
+
+            componentVH: null,
+            componentVW: null,
+            fontREM: null
         }
 
         this.handleChangeDimension = this.handleChangeDimension.bind(this)
+        this.setViewportDimensions = this.setViewportDimensions.bind(this)
+        this.updateResponsiveValues = this.updateResponsiveValues.bind(this)
     }
 
     handleChangeDimension(dimension, value)
@@ -134,6 +149,7 @@ class App extends React.Component
 
             return({...copyCurrent})
         })
+        this.updateResponsiveValues()
     }
 
     calculateResponsiveValue(parentDimension, childDimension)
@@ -146,21 +162,51 @@ class App extends React.Component
         return (px/16).toFixed(2)
     }
 
+    updateResponsiveValues()
+    {
+        this.setState((currentState) => {
+            return(    
+                {
+                    componentVH: this.calculateResponsiveValue(currentState.screenHeight, currentState.componentHeight),
+                    componentVW: this.calculateResponsiveValue(currentState.screenWidth, currentState.componentWidth),
+                    fontREM: this.calculateRem(currentState.fontSize)
+                })
+        })
+    }
+
+    setViewportDimensions()
+    {
+        this.setState({screenHeight: window.innerHeight,
+                       screenWidth: window.innerWidth})
+    }
+
+    componentWillMount()
+    {
+        this.updateResponsiveValues()
+    }
+
+    componentDidMount()
+    {
+        this.setViewportDimensions()
+        window.addEventListener("resize", this.setViewportDimensions)
+    }
+
+    componentWillUnmount()
+    {
+        window.removeEventListener("resize", this.setViewportDimensions)
+    }
+
     render()
     {
-
-        let responsiveValues = {
-            componentVH: this.calculateResponsiveValue(this.state.screenHeight, this.state.componentHeight),
-            componentVW: this.calculateResponsiveValue(this.state.screenWidth, this.state.componentWidth),
-            fontVW: this.calculateRem(this.state.fontSize)
-        }
 
         return(
             <div id="body-wrapper">
                 <TitleBar title="Responsive Value Calculator" />
+                <DisplayBox 
+                text="Example Text"
+                size={this.state.fontREM} />
                 <InputsBox {...Object.assign({}, 
                     this.state, 
-                    responsiveValues, 
                     {handleChangeDimension: 
                     this.handleChangeDimension})}/>
             </div>
