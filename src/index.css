@@ -5,6 +5,9 @@ input {
     font-size: .75rem;
 
     border-radius: 1vw;
+
+    height: 1.94vh;
+    width: 6.88vw;
 }
 
 h1 {
@@ -41,6 +44,8 @@ h2 {
 
 .tag {
     margin: 0;
+
+    font-size: 1.13rem;
 }
 
 #body-wrapper {
@@ -53,6 +58,16 @@ h2 {
 
     height: 100vh;
     width: 100vw;
+}
+
+#title-bar {
+    position: absolute;
+    top: 0px;
+
+    width: 100vw;
+
+    display: flex;
+    justify-content: center
 }
 
 #inputs-box {

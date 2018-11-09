@@ -97,6 +97,15 @@ function InputsBox(props)
     )
 }
 
+function TitleBar(props)
+{
+    return(
+        <div id="title-bar">
+            <h1 id="page-title">{props.title}</h1>
+        </div>
+    )
+}
+
 class App extends React.Component
 {
     constructor(props)
@@ -148,7 +157,7 @@ class App extends React.Component
 
         return(
             <div id="body-wrapper">
-                <h1 id="page-title">Responsive Dimension Calculator</h1>
+                <TitleBar title="Responsive Value Calculator" />
                 <InputsBox {...Object.assign({}, 
                     this.state, 
                     responsiveValues, 
