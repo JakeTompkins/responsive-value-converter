@@ -58,7 +58,7 @@ function InputsBox(props)
                 tagValue="Width"
                 inputValue={props.componentWidth + "px"}
                 handleChangeDimension={props.handleChangeDimension}
-                dimensionChanged="componentHeight" />
+                dimensionChanged="componentWidth" />
 
                 <Input 
                 tagValue="Font Size"
@@ -88,7 +88,7 @@ function InputsBox(props)
                 <Input 
                 tagValue="Font Size"
                 type="text"
-                inputValue={props.fontVW + "vw"}
+                inputValue={props.fontVW + "Rem"}
                 handleChangeDimension={props.handleChangeDimension}
                 dimensionChanged="fontVW"
                 disabled={true} />
@@ -132,13 +132,18 @@ class App extends React.Component
         return((100/parentDimension) * childDimension).toFixed(2)
     }
 
+    calculateRem(px)
+    {
+        return (px/16).toFixed(2)
+    }
+
     render()
     {
 
         let responsiveValues = {
             componentVH: this.calculateResponsiveValue(this.state.screenHeight, this.state.componentHeight),
             componentVW: this.calculateResponsiveValue(this.state.screenWidth, this.state.componentWidth),
-            fontVW: this.calculateResponsiveValue(this.state.screenWidth, this.state.fontSize)
+            fontVW: this.calculateRem(this.state.fontSize)
         }
 
         return(

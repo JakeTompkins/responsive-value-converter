@@ -2,7 +2,7 @@ input {
     text-align: center;
     margin-top: 0;
 
-    font-size: 1vw;
+    font-size: .75rem;
 
     border-radius: 1vw;
 }
@@ -12,7 +12,7 @@ h1 {
 }
 
 h2 {
-    font-size: 1.5vw
+    font-size: 1.13rem;
 }
 
 .input-wrapper {
@@ -28,12 +28,13 @@ h2 {
 
 .title {
     padding:0px;
+    margin: 0;
 
     position: absolute;
     left: 0px;
-    top: -3.5vh;
+    top: -.75rem;
 
-    font-size: 1vw;
+    font-size: .75rem;
 
 
 }
